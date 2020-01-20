@@ -21,7 +21,6 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('textures/',include('textures.urls')),
     path('upload_form/',include('upload_form.urls'))
 ]
 
