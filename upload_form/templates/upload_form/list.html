@@ -1,0 +1,144 @@
+{% extends "upload_form/base.html" %}
+
+{% block title %}
+アセット一覧
+{% endblock %}
+
+{% block body %}
+<div class="container">
+
+  <div class="right_style">
+    <div>
+      <ul class="cp_list">
+        <li>
+          <a href="/upload_form/list">All</a>
+        </li>
+        <li>
+          <a href="/upload_form/list?category=Textures">Textures</a>
+        </li>
+        <li>
+          <a href="/upload_form/list?category=Effects">Effects</a>
+        </li>
+        <li>
+          <a href="/upload_form/list?category=Models">Models</a>
+        </li>
+      </ul>
+    </div>
+
+    <div class="filter_style">
+      <form action={% url 'upload_form:list' %} method="GET">
+        <!-- フィルター実装 -->
+        <p>
+          {# 検索フォーム実装 #}
+          {{ FileNameSearchForm }}
+          <input type='submit' value='検索' />
+        </p>
+
+        <p>
+          拡張子：
+          <select name="extension">
+            {% for e in extension %}
+            <!-- データベースから拡張子の種類のリストを取ってきてフィルターのリストを作成する -->
+            <option value="{{e.extension}}">{{e.extension}}</option>
+            {% endfor %}
+            <option value="" selected>すべて</option>
+          </select>
+        </p>
+        <p>
+          プロジェクト名 :
+          <select name="projects_name">
+            {% for p in projects_name %}
+            <!-- データベースから拡張子の種類のリストを取ってきてフィルターのリストを作成する -->
+            <option value="{{p.projects_name}}">{{p.projects_name}}</option>
+            {% endfor %}
+            <option value="" selected>すべて</option>
+          </select>
+        </p>
+        <p>
+          アップロード者 :
+          <select name="owner">
+            {% for o in owner %}
+            <!-- データベースから拡張子の種類のリストを取ってきてフィルターのリストを作成する -->
+            <option value="{{o.owner}}">{{o.owner}}</option>
+            {% endfor %}
+            <option value="" selected>すべて</option>
+          </select>
+        </p>
+        <input type="submit" value="絞り込み">
+      </form>
+    </div>
+
+    <div>
+      <a href={% url 'upload_form:upload'%} class="btn btn-outline-primary btn-sm">アップロードする！</a>
+    </div>
+  </div>
+  <!-- ここからリスト表示 -->
+  <div class="row row-eq-height grid_style">
+    {% for file in files  %}
+    <div class="col-lg-3 col-md-4 col-sm-6 thumbnail_style text-center col-md-offset-2">
+      <!-- クリックする画像イメージ　サムネイル -->
+      <img src="{{ file.thumbnail_path}}" class="img-responsive thumbnail aligncenter size-full grid_img thumbnail_img"
+        data-toggle="modal" data-target="#image-modal{{file.pk}}" style="cursor:pointer" />
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="image-modal{{file.pk}}" tabindex="-1" role="dialog" aria-labelleady="myLargeModalLabel">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <!-- コンテンツの中身 -->
+
+          <div class="modal-header">
+            <!-- ヘッダー部分 -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="modal-body modal-img_body">
+            <!-- body部分  -->
+
+            <div class="modal-img_body_img">
+              <!-- 画像配置  -->
+              <img src="{{file.thumbnail_path}}" class="aligncenter img-responsive click_img" />
+            </div>
+
+            <div class="modal-img_body_download">
+              <!--  ダウンロードボタン配置  -->
+              <a class="btn btn-primary btn-block" role="button" href="{{ file.file_path}}"
+                download="{{ file.file_name}}">ダウンロード</a>
+            </div>
+
+            <ul class="modal-img_body_textfull">
+              <!-- 画像の詳細情報表示 -->
+              <li class="modal-img_body_text_heading">詳細</li>
+              <li> &nbsp; </li>
+              <li><strong>ファイル名：</strong> {{file.file_name}}</li>
+              <li><strong>拡張子：</strong> {{file.extension}}</li>
+              <li><strong>アップロード者：</strong>{{file.owner}}</li>
+              <li><strong>アップロード日時：</strong>{{file.upload_time}}</li>
+              <li><strong>プロジェクト：</strong>{{file.projects_name}}</li>
+              <li><strong>カテゴリ：</strong>{{file.category}}</li>
+              <li><strong>説明：</strong>{{file.description}}</li>
+            </ul>
+
+          </div>
+
+          <div class="modal-footer modal-img_footer">
+            <!-- フッター部分　テキスト表示  -->
+            <!-- 削除ボタン -->
+            <form action={% url 'upload_form:file_del' %} method="POST">
+              {% csrf_token %}
+              <button type='submit' class='btn btn-danger del_button' name='del_id' value={{file.id}}>削除</button>
+            </form>
+            <!-- モーダルウィンドウを閉じるボタン -->
+            <button type="buton" class="btn btn-success" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</div>
+
+
+{% endblock %}
