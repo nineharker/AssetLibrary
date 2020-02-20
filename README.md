@@ -31,8 +31,7 @@ python manage.py runserver
 http://127.0.0.1:8000/upload_form/list
 
 下記のディレクトリにアップロードしたファイルが保存されます。  
-ディレクトリがないとエラーになるので空のフォルダを作成する必要があります。
-upload_form/static/files
+AssetLibrary/upload_form/static/files
 
-下記のディレクトリにアップロードしたサムネイルが保存されますサムネがない場合 None.jpg を参照するようになっています。  
-upload_form/static/files/thumbnail
+下記のディレクトリにアップロードしたサムネイルが保存されますサムネがない場合 NOTHUMBNAIL を参照するようになっています。  
+AssetLibrary/upload_form/static/files/thumbnail
