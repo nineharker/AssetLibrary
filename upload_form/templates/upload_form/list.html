@@ -8,22 +8,20 @@
 <div class="container">
 
   <div class="right_style">
-    <div id="treeview" class="tree_style">
-      <ul>
+    <div>
+      <ul class="cp_list">
         <li>
-          <a href="/upload_form/list">AssetLibrary</a>
+          <a href="/upload_form/list">All</a>
         </li>
-        <ul>
-          <li>
-            <a href="/upload_form/list?category=Textures">Textures</a>
-          </li>
-          <li>
-            <a href="/upload_form/list?category=Effects">Effects</a>
-          </li>
-          <li>
-            <a href="/upload_form/list?category=Models">Models</a>
-          </li>
-        </ul>
+        <li>
+          <a href="/upload_form/list?category=Textures">Textures</a>
+        </li>
+        <li>
+          <a href="/upload_form/list?category=Effects">Effects</a>
+        </li>
+        <li>
+          <a href="/upload_form/list?category=Models">Models</a>
+        </li>
       </ul>
     </div>
 
@@ -79,11 +77,11 @@
     {% for file in files  %}
     <div class="col-md-3 thumbnail_style text-center col-md-offset-2">
       <!-- クリックする画像イメージ　サムネイル -->
-      <img src="{{ p.thumbnail_path}}" class="img-responsive thumbnail aligncenter size-full grid_img thumbnail_img"
-        data-toggle="modal" data-target="#image-modal{{p.pk}}" style="cursor:pointer" />
+      <img src="{{ file.thumbnail_path}}" class="img-responsive thumbnail aligncenter size-full grid_img thumbnail_img"
+        data-toggle="modal" data-target="#image-modal{{file.pk}}" style="cursor:pointer" />
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="image-modal{{p.pk}}" tabindex="-1" role="dialog" aria-labelleady="myLargeModalLabel">
+    <div class="modal fade" id="image-modal{{file.pk}}" tabindex="-1" role="dialog" aria-labelleady="myLargeModalLabel">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
           <!-- コンテンツの中身 -->
@@ -100,13 +98,13 @@
 
             <div class="modal-img_body_img">
               <!-- 画像配置  -->
-              <img src="{{p.thumbnail_path}}" class="aligncenter img-responsive click_img" />
+              <img src="{{file.thumbnail_path}}" class="aligncenter img-responsive click_img" />
             </div>
 
             <div class="modal-img_body_download">
               <!--  ダウンロードボタン配置  -->
-              <a class="btn btn-primary btn-block" role="button" href="{{ p.file_path}}"
-                download="{{ p.file_name}}">ダウンロード</a>
+              <a class="btn btn-primary btn-block" role="button" href="{{ file.file_path}}"
+                download="{{ file.file_name}}">ダウンロード</a>
             </div>
 
             <ul class="modal-img_body_textfull">
@@ -129,7 +127,7 @@
             <!-- 削除ボタン -->
             <form action={% url 'upload_form:file_del' %} method="POST">
               {% csrf_token %}
-              <button type='submit' class='btn btn-danger del_button' name='del_id' value={{p.id}}>削除</button>
+              <button type='submit' class='btn btn-danger del_button' name='del_id' value={{file.id}}>削除</button>
             </form>
             <!-- モーダルウィンドウを閉じるボタン -->
             <button type="buton" class="btn btn-success" data-dismiss="modal">Close</button>

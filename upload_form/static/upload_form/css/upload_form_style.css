@@ -118,3 +118,16 @@ body {
 }
 
 .thumbnail_style {}
+
+
+
+/* リスト */
+a {
+  color: black
+}
+
+.cp_list {
+  position: relative;
+  padding: 0;
+  list-style-type: none;
+}
