@@ -76,7 +76,7 @@
   </div>
   <!-- ここからリスト表示 -->
   <div class="row row-eq-height grid_style">
-    {% for p in files  %}
+    {% for file in files  %}
     <div class="col-md-3 thumbnail_style text-center col-md-offset-2">
       <!-- クリックする画像イメージ　サムネイル -->
       <img src="{{ p.thumbnail_path}}" class="img-responsive thumbnail aligncenter size-full grid_img thumbnail_img"
@@ -113,13 +113,13 @@
               <!-- 画像の詳細情報表示 -->
               <li class="modal-img_body_text_heading">詳細</li>
               <li> &nbsp; </li>
-              <li><strong>ファイル名：</strong> {{p.file_name}}</li>
-              <li><strong>拡張子：</strong> {{p.extension}}</li>
-              <li><strong>アップロード者：</strong>{{p.owner}}</li>
-              <li><strong>アップロード日時：</strong>{{p.upload_time}}</li>
-              <li><strong>プロジェクト：</strong>{{p.projects_name}}</li>
-              <li><strong>カテゴリ：</strong>{{p.category}}</li>
-              <li><strong>説明：</strong>{{p.description}}</li>
+              <li><strong>ファイル名：</strong> {{file.file_name}}</li>
+              <li><strong>拡張子：</strong> {{file.extension}}</li>
+              <li><strong>アップロード者：</strong>{{file.owner}}</li>
+              <li><strong>アップロード日時：</strong>{{file.upload_time}}</li>
+              <li><strong>プロジェクト：</strong>{{file.projects_name}}</li>
+              <li><strong>カテゴリ：</strong>{{file.category}}</li>
+              <li><strong>説明：</strong>{{file.description}}</li>
             </ul>
 
           </div>
