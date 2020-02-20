@@ -75,7 +75,7 @@
   <!-- ここからリスト表示 -->
   <div class="row row-eq-height grid_style">
     {% for file in files  %}
-    <div class="col-md-3 thumbnail_style text-center col-md-offset-2">
+    <div class="col-lg-3 col-md-4 col-sm-6 thumbnail_style text-center col-md-offset-2">
       <!-- クリックする画像イメージ　サムネイル -->
       <img src="{{ file.thumbnail_path}}" class="img-responsive thumbnail aligncenter size-full grid_img thumbnail_img"
         data-toggle="modal" data-target="#image-modal{{file.pk}}" style="cursor:pointer" />
