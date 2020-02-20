@@ -1,6 +1,4 @@
-
-
-.grid_img{
+.grid_img {
   border: 2px solid darkgray;
   margin: 10px;
   padding: 0px;
@@ -9,64 +7,64 @@
 
 /* ここからモーダルウィンドウの調整 */
 .modal-middle {
-  /* //モーダルウィンドウの表示位置を調整 */
- margin: 5% auto;
+  /* モーダルウィンドウの表示位置を調整 */
+  margin: 5% auto;
 }
 
-.modal-img_footer{
-  /* //表示予定のテキストとボタンを中央揃え */
+.modal-img_footer {
+  /* 表示予定のテキストとボタンを中央揃え */
   padding: 13px 13px;
   justify-content: space-between;
 }
 
-.modal-img_body{
-  /* //表示予定のテキストとボタンを中央揃え */
+.modal-img_body {
+  /* 表示予定のテキストとボタンを中央揃え */
   text-align: center;
 }
 
-.modal-img_body_img{
+.modal-img_body_img {
   border: 1px solid #cccccc;
   border-radius: 5px
 }
 
-.modal-img_body_download{
+.modal-img_body_download {
   padding: 5px 0px;
 }
 
 
-.modal-img_body_textfull{
+.modal-img_body_textfull {
   /* モーダルウィンドウの文章全体の調整 */
   list-style-type: none;
-    padding: 0;
-    margin: 0;
-    text-align: left;
-    border: 1px solid #cccccc;
-    border-radius: 5px
-
+  padding: 0;
+  margin: 0;
+  text-align: left;
+  border: 1px solid #cccccc;
+  border-radius: 5px
 }
-.modal-img_body_text_heading{
+
+.modal-img_body_text_heading {
   /* 「詳細」の調整 */
-    background: #dcdcdc;
-    border: 1px solid #cccccc;
+  background: #dcdcdc;
+  border: 1px solid #cccccc;
 
 }
 
 ul li {
   padding: 5px 10px;
   margin: 0px;
-  border-bottom:1px solid #cccccc;
-  }
+  border-bottom: 1px solid #cccccc;
+}
 
-  .upload_style {
-    /* upload_style変更 */
-    border: 1px solid #cccccc;
-    width: 500px;
-    margin: 10px auto;
-    padding: 10px;
-    background: #eeeeee;
-  }
+.upload_style {
+  /* upload_style変更 */
+  border: 1px solid #cccccc;
+  width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  background: #eeeeee;
+}
 
-.container{
+.container {
   display: grid;
   margin: auto;
   grid-gap: 10px;
@@ -76,48 +74,47 @@ ul li {
 }
 
 body {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
-.tree_style{
+.tree_style {
   /* border-bottom : 1px #cccccc; */
   margin-bottom: 30px;
 
 }
 
-.filter_style{
+.filter_style {
   margin-bottom: 30px;
   border: 10px #000000;
 }
 
-.right_style{
+.right_style {
 
-  margin : 10px;
+  margin: 10px;
   padding: 20px;
   border: 10px #000000;
   grid-column: 5/6;
   grid-row: 1;
 }
 
-.grid_style{
+.grid_style {
   padding: 20px;
   background-color: whitesmoke;
   grid-column: 1/5;
   grid-row: 1;
 }
 
-.del_button{
-}
+.del_button {}
 
 .thumbnail_img {
-max-width:256px;
-max-height:256px;
-}
-.click_img {
-max-width:400px;
-max-height:400px;
+  max-width: 256px;
+  max-height: 256px;
 }
 
-.thumbnail_style{
+.click_img {
+  max-width: 400px;
+  max-height: 400px;
 }
+
+.thumbnail_style {}
