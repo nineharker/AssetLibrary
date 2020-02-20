@@ -1,7 +1,5 @@
 from django.db import models
 from datetime import datetime
-# from imagekit.models import ImageSpecField,ProcessedImageField
-# from imagekit.processors import ResizeToFill
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
 import os
