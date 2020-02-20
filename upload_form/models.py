@@ -4,7 +4,8 @@ from datetime import datetime
 # from imagekit.processors import ResizeToFill
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
-import os,sys
+import os
+import sys
 # Create your models here.
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -14,6 +15,7 @@ CATEGORY_CHOICES = (
     ('エフェクト', 'エフェクト'),
 )
 
+
 class File(models.Model):
     # 画像のモデル
     class Meta:
@@ -21,22 +23,18 @@ class File(models.Model):
         verbose_name = 'ファイル'
         verbose_name_plural = 'ファイル'
         ordering = ['-upload_time']
-
-
-
-
     owner = models.CharField(max_length=20)
     file_name = models.CharField(max_length=50)
-    upload_time = models.DateTimeField(default = datetime.now)
+    upload_time = models.DateTimeField(default=datetime.now)
     projects_name = models.CharField(max_length=20)
     file_path = models.CharField(max_length=100)
     thumbnail_path = models.CharField(max_length=100)
     extension = models.CharField(max_length=10)
-    category = models.CharField(max_length=5,choices = CATEGORY_CHOICES,default=None)
-    description = models.CharField(max_length=100,blank=True)
-
-
+    category = models.CharField(
+        max_length=5, choices=CATEGORY_CHOICES, default=None)
+    description = models.CharField(max_length=100, blank=True)
     #
+
     def __str__(self):
         return self.file_name
 
@@ -46,17 +44,17 @@ class File(models.Model):
 def delete_file(sender, instance, **kwargs):
     try:
         # ドライブレターを消すためにスライシング
-        file_path = os.path.join(BASE_DIR,instance.file_path[1:])
+        file_path = os.path.join(BASE_DIR, instance.file_path[1:])
         os.remove(file_path)
     except FileNotFoundError:
         print('File not found')
 
-    if os.path.basename(instance.thumbnail_path) == 'None.jpg':
+    if instance.thumbnail_path == 'https://user-images.githubusercontent.com/48968940/74902177-970dbf00-53e8-11ea-94d5-a93d440ba732.jpg':
         # サムネがもともとなかった場合はreturn
         return
     try:
         # ドライブレターを消すためにスライシングして合体
-        thumbnail_path = os.path.join(BASE_DIR,instance.thumbnail_path[1:])
+        thumbnail_path = os.path.join(BASE_DIR, instance.thumbnail_path[1:])
         os.remove(thumbnail_path)
     except FileNotFoundError:
         print('File not found')
