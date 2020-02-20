@@ -7,20 +7,19 @@ from PIL import Image, ImageFilter
 from psd_tools import PSDImage
 import sys
 import os
-# Create your views here.
 
+# ファイルを保存するパス
 UPLOADE_DIR = os.path.dirname(os.path.abspath(__file__)) + '/static/files/'
+# サムネイルのパス
 THUMBNAIL_DIR = os.path.dirname(os.path.abspath(
     __file__)) + '/static/files/thumbnail/'
 
 
 def upload(request):
     """
-    最初が画像ファイルのみの想定だったが、やっぱり色々なファイルのアップロードに対応するために改良
     FileFieldを使わずにopen(path,'wb')でコピーしている
     サムネイル作成対応
-    18/10/22
-    momo: 現在フォームを個別に設定しているが一つのクラスにまとめてforループで処理したほうがよさそう・・
+    18/10/22 メモ: 現在フォームを個別に設定しているが一つのクラスにまとめてforループで処理したほうがよさそう・・
     """
     if not request.method == 'POST':  # methodが'POST'ではない　＝最初のページ表示時の処理
         return render(request, 'upload_form/upload.html', {
@@ -83,7 +82,7 @@ def upload(request):
         merged_image.thumbnail((512, 512), Image.ANTIALIAS)
         merged_image.save(thumbnail_path)
     elif ext in image_file_extension:
-        # 画像ファイルの場合サムネイルを作成
+        # 画像ファイルの場合サムネイルを作成を試みる
         try:
             thumbnail_root, thumbnail_ext = os.path.splitext(thumbnail_path)
             # サムネイルのパスの拡張子をjpgにしておく
