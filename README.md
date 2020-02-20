@@ -1,6 +1,7 @@
 # AssetLibrary について
 
-python3 の Django を使ったアセット共有 WEB アプリケーションです。
+python の Django を使ったアセット共有 WEB アプリケーションです。  
+open(path,'wb')を使っているので基本的になんでもアップロードできます。
 
 # 使い方
 
@@ -27,7 +28,7 @@ python manage.py migrate
 python manage.py runserver
 ```
 
-下記の URL にアップロードしたファイルが表示されます。
+下記の URL にアップロードしたファイルが表示されます。  
 http://127.0.0.1:8000/upload_form/list
 
 下記のディレクトリにアップロードしたファイルが保存されます。  
