@@ -6,14 +6,11 @@ verify_ssl = true
 [dev-packages]
 autopep8 = "*"
 flake8 = "*"
-pylint = "*"
 
 [packages]
 django = "*"
 pytz = "*"
 pillow = "*"
-django-bootstrap4 = "*"
-imagekit = "*"
 psd-tools = "*"
 
 [requires]
